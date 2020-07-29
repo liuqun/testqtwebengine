@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QTranslator>
+#include <QFile>
 
 int main(int argc, char *argv[])
 {
@@ -8,7 +9,13 @@ int main(int argc, char *argv[])
     MainWindow w;
     QTranslator translator;
 
-    translator.load("../../mywebengine/mywebengine_zh_CN.qm");
+    const char *qmfile = "..\\..\\mywebengine\\mywebengine_zh_CN.qm";
+    if(QFile::exists(qmfile)) {
+        qWarning("failed-no file");
+        return -1;
+    }
+
+    translator.load(qmfile);
     a.installTranslator(&translator);
 
     w.setWindowTitle("China No.22 Institude");

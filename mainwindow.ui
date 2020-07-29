@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>1024</width>
      <height>26</height>
     </rect>
    </property>
@@ -28,6 +28,7 @@
      <string>Tools</string>
     </property>
     <addaction name="actionGoto_Homepage"/>
+    <addaction name="actionUpgrade"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -49,12 +50,17 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
    <property name="text">
-    <string>About</string>
+    <string>About...</string>
    </property>
   </action>
   <action name="actionGoto_Homepage">
    <property name="text">
     <string>Goto Homepage</string>
+   </property>
+  </action>
+  <action name="actionUpgrade">
+   <property name="text">
+    <string>Upgrade...</string>
    </property>
   </action>
  </widget>

@@ -14,19 +14,24 @@
         <translation>工具</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="34"/>
+        <location filename="mainwindow.ui" line="35"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="52"/>
-        <source>About</source>
-        <translation>版本信息</translation>
+        <location filename="mainwindow.ui" line="53"/>
+        <source>About...</source>
+        <translation>版本信息...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="57"/>
+        <location filename="mainwindow.ui" line="58"/>
         <source>Goto Homepage</source>
         <translation>打开主页</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="63"/>
+        <source>Upgrade...</source>
+        <translation>升级客户端...</translation>
     </message>
 </context>
 </TS>

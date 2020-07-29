@@ -18,3 +18,6 @@ FORMS += \
     mainwindow.ui
 
 TRANSLATIONS += mywebengine_zh_CN.ts
+
+RESOURCES += \
+    mywebengine.qrc
