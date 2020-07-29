@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     locationEdit = new QLineEdit(this);
     locationEdit->setText(url);
+    locationEdit->setDisabled(true);
     connect(locationEdit, &QLineEdit::returnPressed, this, &MainWindow::changeLocation);
     connect(view, &QWebEngineView::urlChanged, this, &MainWindow::updateLocationByQWebEngine);
 
