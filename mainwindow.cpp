@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     locationEdit = new QLineEdit(this);
     locationEdit->setText(url);
     connect(locationEdit, &QLineEdit::returnPressed, this, &MainWindow::changeLocation);
+    connect(view, &QWebEngineView::urlChanged, this, &MainWindow::updateLocationByQWebEngine);
 
     // 向工具栏添加动作和部件
     ui->mainToolBar->addAction(view->pageAction(QWebEnginePage::Back));
@@ -37,6 +38,13 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+// 更新URL地址字符串
+void MainWindow::updateLocationByQWebEngine()
+{
+    QUrl url = view->url();
+    locationEdit->setText(url.toString());
 }
 
 // 地址栏按下回车处理槽

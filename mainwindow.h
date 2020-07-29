@@ -27,6 +27,7 @@ private:
 
 protected slots:
     void changeLocation(); // 改变路径
+    void updateLocationByQWebEngine();//
     void setProgress(int); // 更新进度
     void adjustTitle();    // 更新标题显示
     void finishLoading(bool); // 加载完成后进行处理
