@@ -57,9 +57,9 @@ void MainWindow::setProgress(int p)
 void MainWindow::adjustTitle()
 {
     if (progress <= 0) {
-        setWindowTitle(QObject::tr("China No.22 Institude"));
+        return;
     }
-    else if (progress >= 100) {
+    if (progress >= 100) {
         setWindowTitle(view->title());
     } else {
         setWindowTitle(QString("%1 (%2%)").arg(view->title()).arg(progress));
