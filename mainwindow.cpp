@@ -46,6 +46,7 @@ void MainWindow::updateLocationByQWebEngine()
 {
     QUrl url = view->url();
     locationEdit->setText(url.toString());
+    locationEdit->setCursorPosition(0);
 }
 
 // 地址栏按下回车处理槽
