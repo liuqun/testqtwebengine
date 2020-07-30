@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     view = new QWebEngineView(this);
     view->load(QUrl(url));
     setCentralWidget(view);
-    resize(1024, 680);
+    statusBar()->setHidden(true);
 
     progress = 0;
 
