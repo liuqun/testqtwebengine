@@ -8,6 +8,7 @@ class MainWindow;
 }
 class QWebEngineView;
 class QLineEdit;
+class QNetworkAccessManager;
 
 class MainWindow : public QMainWindow
 {
@@ -23,7 +24,7 @@ private:
 
     QLineEdit *locationEdit;
     int progress;
-
+    QNetworkAccessManager *manager;
 
 protected slots:
     void changeLocation(); // 改变路径
@@ -31,6 +32,8 @@ protected slots:
     void setProgress(int); // 更新进度
     void adjustTitle();    // 更新标题显示
     void finishLoading(bool); // 加载完成后进行处理
+    void handleIconUrlChanged(const QUrl &url);
+    void handleIconLoaded();
 };
 
 #endif // MAINWINDOW_H

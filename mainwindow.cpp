@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QWebEngineView>
 #include <QLineEdit>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,6 +30,10 @@ MainWindow::MainWindow(QWidget *parent) :
     locationEdit->setDisabled(true);
     connect(locationEdit, &QLineEdit::returnPressed, this, &MainWindow::changeLocation);
     connect(view, &QWebEngineView::urlChanged, this, &MainWindow::updateLocationByQWebEngine);
+
+    connect(view, &QWebEngineView::iconUrlChanged,
+            this, &MainWindow::handleIconUrlChanged);
+    manager = new QNetworkAccessManager(this);
 
     // 向工具栏添加动作和部件
     ui->mainToolBar->addAction(view->pageAction(QWebEnginePage::Back));
@@ -84,4 +91,30 @@ void MainWindow::finishLoading(bool finished)
     } else {
         setWindowTitle(tr("错误：网络超时，无法连接数据库服务器！"));
     }
+}
+
+// 获取图标文件
+void MainWindow::handleIconUrlChanged(const QUrl &url)
+{
+    QNetworkRequest iconRequest(url);
+    QNetworkReply *iconReply = manager->get(iconRequest);
+    iconReply->setParent(this);
+    connect(iconReply, &QNetworkReply::finished, this, &MainWindow::handleIconLoaded);
+}
+
+// 对获取的图标文件进行处理
+void MainWindow::handleIconLoaded()
+{
+    QIcon icon;
+    QNetworkReply *iconReply = qobject_cast<QNetworkReply*>(sender());
+    if (iconReply && iconReply->error() == QNetworkReply::NoError) {
+        QByteArray data = iconReply->readAll();
+        QPixmap pixmap;
+        pixmap.loadFromData(data);
+        icon.addPixmap(pixmap);
+        iconReply->deleteLater();
+    } else {
+        icon = QIcon(QStringLiteral("../mywebengine/defaulticon.png"));
+    }
+    setWindowIcon(icon);
 }
