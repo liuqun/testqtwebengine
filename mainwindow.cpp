@@ -83,6 +83,6 @@ void MainWindow::finishLoading(bool finished)
         progress = 100;
         setWindowTitle(view->title());
     } else {
-        setWindowTitle("web page loading error!");
+        setWindowTitle(tr("错误：网络超时，无法连接数据库服务器！"));
     }
 }
