@@ -32,7 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mainToolBar->addAction(view->pageAction(QWebEnginePage::Back));
     ui->mainToolBar->addAction(view->pageAction(QWebEnginePage::Forward));
     ui->mainToolBar->addAction(view->pageAction(QWebEnginePage::Reload));
-    ui->mainToolBar->addAction(view->pageAction(QWebEnginePage::Stop));
     ui->mainToolBar->addWidget(locationEdit);
 }
 
