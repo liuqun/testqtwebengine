@@ -7,7 +7,10 @@ namespace Ui {
 class MainWindow;
 }
 class QWebEngineView;
+class QIcon;
+class QLabel;
 class QLineEdit;
+class QNetworkAccessManager;
 
 class MainWindow : public QMainWindow
 {
@@ -21,8 +24,11 @@ private:
     Ui::MainWindow *ui;
     QWebEngineView *view;
 
+    QIcon *webSiteIcon;
+    QLabel *webSiteIconLabel;
     QLineEdit *locationEdit;
     int progress;
+    QNetworkAccessManager *manager;
 
 
 protected slots:
@@ -31,6 +37,8 @@ protected slots:
     void setProgress(int); // 更新进度
     void adjustTitle();    // 更新标题显示
     void finishLoading(bool); // 加载完成后进行处理
+    void handleIconUrlChanged(const QUrl &url);
+    void handleIconLoaded();
 };
 
 #endif // MAINWINDOW_H
